@@ -248,7 +248,9 @@ module cheshire_soc
       UniqueIds: 0,
       AxiAddrWidth: Cfg.AddrWidth,
       AxiDataWidth: Cfg.AxiDataWidth,
-      NoAddrRules: AxiOut.num_rules
+      NoAddrRules: AxiOut.num_rules,
+      NoMulticastRules: 0,
+      NoMulticastPorts: 0
   };
 
   axi_xbar #(
