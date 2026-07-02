@@ -502,10 +502,10 @@ package cheshire_pkg;
     ret.DmBaseAddress         = AmDbg;
     ret.HaltAddress           = 'h800; // Relative to AmDbg
     ret.ExceptionAddress      = 'h810; // Relative to AmDbg
-    ret.NrNonIdempotentRules  = 1;   // Periphs;
-    ret.NonIdempotentAddrBase = {AmRegs};
+    ret.NrNonIdempotentRules  = 2;   // Periphs and DMA regs;
+    ret.NonIdempotentAddrBase = {AmRegs, 64'h0100_0000};
     ret.NOCType               = config_pkg::NOC_TYPE_AXI4_ATOP;
-    ret.NonIdempotentLength   = {AmSpm - AmRegs};
+    ret.NonIdempotentLength   = {AmSpm - AmRegs, 64'h1000};
     ret.NrExecuteRegionRules  = 6;   // Debug, Bootrom, SPM, SPM Uncached, LLCOut, ExtCI;
     ret.ExecuteRegionAddrBase = {AmDbg,     AmBrom,    AmSpm,   AmSpmUnc, cfg.LlcOutRegionStart, cfg.Cva6ExtCieBase};
     ret.ExecuteRegionLength   = {64'h40000, 64'h40000, SizeSpm, SizeSpm,  SizeLlcOut, cfg.Cva6ExtCieLength};
